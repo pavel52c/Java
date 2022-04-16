@@ -83,6 +83,17 @@ class LettersTest {
     }
 
     @Test
+    void iteratorRemove2() {
+        Letters letters = new Letters("Hello world");
+        Iterator iter = letters.iterator();
+        for (int i = 0; i < 4; i++)
+            iter.next();
+        iter.remove();
+        iter.remove();
+        Assertions.assertEquals("He world", letters.toString());
+    }
+
+    @Test
     void iteratorRemove3() {
         Letters letters = new Letters("Hello world");
         Iterator iter = letters.iterator();

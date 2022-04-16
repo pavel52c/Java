@@ -133,7 +133,6 @@ public class Letters implements Collection<Character> {
             resize(letters.length * 2);
         letters[pointer++] = chr;
         return letters[pointer - 1] == chr;
-
     }
 
     @Override
