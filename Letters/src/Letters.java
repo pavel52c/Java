@@ -11,6 +11,7 @@ public class Letters implements Collection<Character> {
 
     private class MyIterator implements Iterator<Character> {
         private int current = -1;
+        private boolean hasPrev = false;
 
         @Override
         public boolean hasNext() {
@@ -20,6 +21,7 @@ public class Letters implements Collection<Character> {
         @Override
         public Character next() throws NoSuchElementException {
             if (hasNext()) {
+                hasPrev = true;
                 return letters[++current];
             }
             else
@@ -30,9 +32,8 @@ public class Letters implements Collection<Character> {
         public void remove() throws NoSuchElementException {
             Character[] result = new Character[letters.length - 1];
             if (current != -1) {
-                if (current == 0) {
-                    System.arraycopy(letters, 1, result, 0, letters.length - 1);
-                }
+                if (!hasPrev)
+                    throw new NoSuchElementException();
                 else {
                     for (int i = 0; i < current; i++){
                         result[i] = letters[i];
@@ -43,6 +44,7 @@ public class Letters implements Collection<Character> {
                 }
                 current--;
                 pointer--;
+                hasPrev = false;
                 System.arraycopy(result, 0, letters, 0, result.length);
                 return;
             }
@@ -77,7 +79,7 @@ public class Letters implements Collection<Character> {
         letters = chars;
     }
 
-    private int index(Character ch) {
+    private int find(Character ch) {
         for (int i = 0; i < pointer; i++) {
             if (letters[i].equals(ch))
                 return i;
@@ -141,7 +143,7 @@ public class Letters implements Collection<Character> {
         if (obj == null)
             return false;
         if (contains(obj)) {
-            for (int i = index(chr); i < pointer - 1; i++)
+            for (int i = find(chr); i < pointer - 1; i++)
                 letters[i] = letters[i + 1];
             letters[--pointer] = null;
             return true;

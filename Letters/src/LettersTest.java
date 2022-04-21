@@ -90,7 +90,7 @@ class LettersTest {
             iter.next();
         iter.remove();
         iter.remove();
-        Assertions.assertEquals("He world", letters.toString());
+        Assertions.assertEquals("Heo world", letters.toString());
     }
 
     @Test
