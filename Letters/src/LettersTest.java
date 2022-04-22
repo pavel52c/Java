@@ -72,25 +72,23 @@ class LettersTest {
 
     @Test
     void iteratorRemove1() {
-        Letters letters = new Letters("Hello world!");
+        Letters letters = new Letters("Hello world");
         Iterator iter = letters.iterator();
-        while (iter.hasNext()) {
-            iter.next();
-        }
+        iter.next();
         iter.remove();
+        iter.next();
         iter.remove();
-        Assertions.assertEquals("Hello worl", letters.toString());
+        Assertions.assertEquals("llo world", letters.toString());
     }
 
     @Test
     void iteratorRemove2() {
-        Letters letters = new Letters("Hello world");
+        Letters letters = new Letters("123");
         Iterator iter = letters.iterator();
-        for (int i = 0; i < 4; i++)
-            iter.next();
+        iter.next();
+        iter.next();
         iter.remove();
-        iter.remove();
-        Assertions.assertEquals("Heo world", letters.toString());
+        Assertions.assertEquals("13", letters.toString());
     }
 
     @Test

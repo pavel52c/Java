@@ -38,7 +38,7 @@ public class Letters implements Collection<Character> {
                     for (int i = 0; i < current; i++){
                         result[i] = letters[i];
                     }
-                    for (int i = current + 1; i < result.length; i++){
+                    for (int i = current; i < result.length; i++){
                         result[i] = letters[i + 1];
                     }
                 }
@@ -58,7 +58,6 @@ public class Letters implements Collection<Character> {
                 s.append(letters[i]);
             return s.toString();
         }
-
     }
 
     public Letters() {
@@ -200,10 +199,10 @@ public class Letters implements Collection<Character> {
     @Override
     public void clear() {
         Iterator<Character> iterator = iterator();
-        while (iterator.hasNext())
+        while (iterator.hasNext()) {
             iterator.next();
-        while (pointer != 0)
             iterator.remove();
+        }
     }
 
     @Override
