@@ -16,6 +16,10 @@ class Stack<T> {
         }
     }
 
+    public boolean isFull() {
+        return current == size - 1;
+    }
+
     boolean isEmpty() {
         return  size==0;
     }
@@ -57,6 +61,24 @@ class Stack<T> {
                 System.out.print(t + " ");
             else
                 break;
+        }
+    }
+
+    public class MyIter {
+        private int position;
+
+        public MyIter() {
+            position = current + 1;
+        }
+
+        public boolean hasNext() {
+            return position - 1 > 0;
+        }
+
+        public T next() throws IndexOutOfBoundsException {
+            if (position - 1 < 0) throw new IndexOutOfBoundsException("End of stack.");
+            position--;
+            return stack[position];
         }
     }
 }
