@@ -27,11 +27,9 @@ public class Person {
 
             if (historyOfFirstNames.containsKey(year) && historyOfLastNames.containsKey(year)) {
                 return historyOfFirstNames.get(year) + " " + historyOfLastNames.get(year);
-            }
-            else if (historyOfFirstNames.containsKey(year) && !historyOfLastNames.containsKey(year)) {
+            } else if (historyOfFirstNames.containsKey(year) && !historyOfLastNames.containsKey(year)) {
                 return historyOfFirstNames.get(year) + " with unknown last name";
-            }
-            else {
+            } else {
                 return historyOfLastNames.get(year) + " with unknown first name";
             }
 
@@ -84,17 +82,13 @@ public class Person {
 
         if (fullName.length == 2) {
             return fullName[0] + " ( " + oldFirstNames + " ) " + fullName[1] + " ( " + oldLastNames + " )";
-        }
-        else if (fullName.length == 1) {
+        } else if (fullName.length == 1) {
             return "( " + oldFirstNames + " ) " + "( " + oldLastNames + " )";
-        }
-        else if (fullName[fullName.length - 2].equals("last")) {
+        } else if (fullName[fullName.length - 2].equals("last")) {
             return fullName[0] + " ( " + oldFirstNames + " )" + " ( " + oldLastNames + " )";
-        }
-        else if (fullName[fullName.length - 2].equals("first")) {
+        } else if (fullName[fullName.length - 2].equals("first")) {
             return "( " + oldFirstNames + " ) " + fullName[0] + " ( " + oldLastNames + " )";
-        }
-        else {
+        } else {
             return "";
         }
     }
